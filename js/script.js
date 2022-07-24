@@ -1,19 +1,22 @@
 'use strict';
 
-const arr = [1, 2, 15, -2, 8];
- const positiveCheck = function (arr){
+const arr = [1, 2, 3, -1, -2, -3];
+ const positiveCheck = function (arrForCheck){
+     const defaultResult=[];
+
+     if (!Array.isArray(arrForCheck) || !arrForCheck.length) return defaultResult;
+
      const positiveArr=[];
 
-     if (arr.length === 0) {
-         console.log ('Entered array is empty');
-     } else {
-         for (let i = 0; i < arr.length; i++){
-             if (arr [i] > 0) positiveArr.push(arr [i]);
-             }
+     for (let i = 0; i < arrForCheck.length; i++){
+
+         if (typeof arrForCheck [i] !== 'number') continue;
+         if ( isNaN(arrForCheck [i])) continue;
+
+         if (arrForCheck [i] > 0) positiveArr.push(arrForCheck [i]);
          }
 
-     if (positiveArr.length === 0) return null;
-     return positiveArr;
+     return positiveArr.length > 0 ? positiveArr : null;
 
  }
 
